@@ -73,17 +73,6 @@ func buildAWSApiGatewayRestAPI(arns []string) *resources.AWSApiGatewayRestApi {
 			Types: []string{"EDGE"},
 		},
 		Name: cfn.Ref("AWS::StackName"),
-		Policy: &PolicyDocument{
-			Version: "2012-10-17",
-			Statement: []Statement{
-				{
-					Action:    []string{"execute-api:Invoke"},
-					Effect:    "Allow",
-					Principal: map[string][]string{"AWS": arns},
-					Resource:  []string{"*"},
-				},
-			},
-		},
 	}
 }
 
@@ -176,7 +165,7 @@ func buildAWSApiGatewayMethod(resourceLogicalName, path string) *resources.AWSAp
 		RequestParameters: map[string]bool{
 			"method.request.path.proxy": true,
 		},
-		AuthorizationType: "AWS_IAM",
+		AuthorizationType: "NONE",
 		HttpMethod:        "ANY",
 		ResourceId:        cfn.Ref(resourceLogicalName),
 		RestApiId:         cfn.Ref("RestAPI"),
