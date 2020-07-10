@@ -2,9 +2,6 @@
 
 ## Getting Started
 
-The default configuration assumes you are using kube2iam to manage pod permissions.
-To set up a role for this controller use the following command
-
 Create an ECR repository.
 
 To build and deploy the controller into ECR.
