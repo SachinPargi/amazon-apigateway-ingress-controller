@@ -8,13 +8,13 @@ To build and deploy the controller into ECR.
 
 ```sh
 
-aws ecr get-login-password --region {aws-region} | docker login --username AWS --password-stdin {accountID}.dkr.ecr.us-east-2.amazonaws.com
+aws ecr get-login-password --region {aws-region} | docker login --username AWS --password-stdin {accountID}.dkr.ecr.{aws-region}.amazonaws.com
 
 docker build -t apigcontroller .
 
-docker tag apigcontroller:latest {accountID}.dkr.ecr.us-east-2.amazonaws.com/apigcontroller:latest
+docker tag apigcontroller:latest {accountID}.dkr.ecr.{aws-region}.amazonaws.com/apigcontroller:latest
 
-docker push {accountID}.dkr.ecr.us-east-2.amazonaws.com/apigcontroller:latest
+docker push {accountID}.dkr.ecr.{aws-region}.amazonaws.com/apigcontroller:latest
 
 ```
 
