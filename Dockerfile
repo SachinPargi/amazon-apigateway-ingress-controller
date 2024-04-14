@@ -11,7 +11,7 @@ COPY vendor/ vendor/
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o manager github.com/awslabs/amazon-apigateway-ingress-controller/cmd/manager
 
 # Copy the controller-manager into a thin image
-FROM alpine:3.9
+FROM alpine:3.16.9
 RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
 WORKDIR /
 COPY --from=builder /go/src/github.com/awslabs/amazon-apigateway-ingress-controller/manager .
